@@ -32,6 +32,11 @@ if [[ "$GIT_CHANGES" == *"Dockerfile"* || "$DEBUG" == "true" ]]; then
 	EXPECTED="dan9186"
 	[[ "$RESULT" == *"$EXPECTED"* ]] || echo "Failed -- Got: $RESULT Expected: $EXPECTED"
 
+
+	if [ "$TRAVIS_BRANCH" == "master" ]; then
+		echo "Pushing image $IMAGE_NAME"
+		docker push $IMAGE_NAME
+	fi
 else
 	echo "No Dockerfile changes, skipping docker build"
 fi

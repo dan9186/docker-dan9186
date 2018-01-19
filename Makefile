@@ -2,6 +2,7 @@ SHELL = bash
 
 APP := $(shell basename $(PWD) | tr '[:upper:]' '[:lower:]')
 VERSION := $(shell git describe --tags 2>/dev/null || echo v0.0.1)
+TRAVIS_BUILD_NUMBER ?= 1
 BUILD_NUMBER ?= $(TRAVIS_BUILD_NUMBER)
 BUILD_VERSION := $(VERSION)-$(BUILD_NUMBER)
 GIT_COMMIT_HASH ?= $(TRAVIS_COMMIT)
@@ -17,8 +18,8 @@ all: dockerize
 .PHONY: ci_setup
 ci_setup:  ## Setup the CI environment
 	@echo "Unshallowing repo"
-	#git fetch --unshallow
-	#git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+	git fetch --unshallow
+	git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 	git fetch origin
 	@echo "Logging into Docker Hub"
 	@if [[ -z "$$DOCKER_USER" || -z "$$DOCKER_PASSWORD" ]]; then \

@@ -2,16 +2,15 @@ FROM dan9186/devopsbase
 
 MAINTAINER Daniel Hess <dan9186@gmail.com>
 
-ARG BUILD_DATE
-ARG BUILD_NUMBER
+ARG GIT_COMMIT_HASH
 ARG VERSION
 
-LABEL org.metadata.build-date=$BUILD_DATE \
-	   org.metadata.version=$VERSION.$BUILD_NUMBER \
+LABEL org.metadata.version=$VERSION \
 	   org.metadata.name="Dan9186 Personal Development Environment" \
 	   org.metadata.description="A personalized development environment for Dan9186" \
 	   org.metadata.url="https://github.com/dan9186/docker-dan9186" \
-	   org.metadata.vcs-url="https://github.com/dan9186/docker-dan9186"
+	   org.metadata.vcs-url="https://github.com/dan9186/docker-dan9186" \
+	   org.metadata.vcs-sha=$GIT_COMMIT_HASH
 
 # Install custom deps
 RUN yum -y update && \

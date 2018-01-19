@@ -15,7 +15,7 @@ LABEL org.metadata.version=$VERSION \
 # Install custom deps
 RUN yum -y update && \
     yum -y upgrade && \
-    yum -y install sudo zsh
+    yum -y install ctags sudo zsh
 
 # Create custom user
 RUN useradd -ms /bin/zsh dan9186 && \

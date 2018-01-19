@@ -35,10 +35,9 @@ RUN git clone https://github.com/myzsh/myzsh $HOME/.myzsh && \
     git clone https://github.com/dan9186/myzsh-dan9186 $HOME/.myzsh/remotes/dan9186
 
 # Install custom vim settings
-RUN git clone --recursive https://github.com/dan9186/Vimderp.git $HOME/.vim && \
+RUN git clone --recursive https://github.com/dan9186/vimderp.git $HOME/.vim && \
     cd $HOME/.vim && \
-    ./install.sh && \
-    ./bundle/YouCompleteMe/install.py --gocode-completer
+    ./install.sh
 
 # Add custom config files
 RUN git clone https://github.com/dan9186/dotfiles $HOME/dotfiles && \

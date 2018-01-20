@@ -35,13 +35,11 @@ RUN git clone https://github.com/myzsh/myzsh $HOME/.myzsh && \
 
 # Install custom vim settings
 RUN git clone --recursive https://github.com/dan9186/vimderp.git $HOME/.vim && \
-    cd $HOME/.vim && \
-    ./install.sh
+    cd $HOME/.vim && ./install.sh
 
 # Add custom config files
 RUN git clone https://github.com/dan9186/dotfiles $HOME/dotfiles && \
-	 cd $HOME/dotfiles && \
-	 ./install.sh
+    cd $HOME/dotfiles && ./install.sh
 
 # Root installed and handled items
 # Install versions of Ruby and configs
